@@ -14,7 +14,7 @@ class App extends React.Component {
       <BrowserRouter>
 
         <Switch>
-          
+
           <Route exact path="/profile/edit">
             <ProfileEdit />
           </Route>

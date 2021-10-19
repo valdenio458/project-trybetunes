@@ -4,8 +4,8 @@ class Search extends React.Component {
   render() {
     return (
       <div data-testid="page-search">
-
-      </div> 
+        Procura
+      </div>
     );
   }
 }
