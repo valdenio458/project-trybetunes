@@ -49,7 +49,6 @@ class Login extends React.Component {
     this.setState({
       isLoading: false,
       input: '',
-     // isButtonDisabled: true,
       redirect: true,
     });
   }
