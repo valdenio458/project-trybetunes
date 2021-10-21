@@ -12,7 +12,7 @@ class Search extends React.Component {
       artist: '',
       isButtonDisabled: true,
       isLoading: false,
-      result:  '', 
+      result: '',
       albums: [],
 
     };
@@ -70,7 +70,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const { artist, isButtonDisabled, isLoading, albums, result} = this.state;
+    const { artist, isButtonDisabled, isLoading, albums, result } = this.state;
     return (
       isLoading ? <Loading />
         : (
