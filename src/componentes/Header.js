@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-
 import { getUser } from '../services/userAPI';
-
 import Loading from '../pages/Loading';
 
 class Header extends React.Component {
@@ -30,12 +27,9 @@ class Header extends React.Component {
     if (loading) return <Loading />;
     return (
       <header data-testid="header-component">
-        <p>TrybeTunes</p>
 
         {
-
           !loading && <p data-testid="header-user-name">{ userName }</p>
-
         }
 
         <Link to="/search" data-testid="link-to-search">Busca</Link>
