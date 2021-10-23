@@ -30,12 +30,13 @@ class App extends React.Component {
           <Route
             exact
             path="/album/:id"
-            render={ (routeprops) => <Album { ...routeprops }/> }
+            render={ (routeprops) => <Album { ...routeprops } /> }
           />
 
           <Route exact path="/">
             <Login />
           </Route>
+
           <Route path="*/">
             <NoteFound />
           </Route>
