@@ -66,7 +66,7 @@ class Album extends React.Component {
               previewUrl={ music.previewUrl }
               trackId={ music.trackId }
               song={ music }
-              checked={ this.checkFavorites(music.trackId) }
+              checked={ this.checkFavorites }
               checkedIfIsFavorite={ this.requestFavorites }
 
             />))

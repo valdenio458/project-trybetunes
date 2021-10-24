@@ -18,10 +18,10 @@ class MusicCard extends React.Component {
       isLoading: true,
     });
     await addSong(song);
+    await checkedIfIsFavorite();
     this.setState({
       isLoading: false,
     });
-    checkedIfIsFavorite();
   }
 
   render() {
@@ -45,7 +45,7 @@ class MusicCard extends React.Component {
             type="checkbox"
             data-testid={ `checkbox-music-${trackId}` }
             onChange={ this.handleCheckbox }
-            checked={ checked }
+            checked={ checked(trackId) }
           />
         </label>
         { isLoading && <span>Carregando...</span>}
