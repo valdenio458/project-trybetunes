@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../componentes/Header';
 import MusicCard from '../componentes/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -10,11 +11,16 @@ class Album extends React.Component {
     this.state = {
       musics: [],
       requestComplete: false,
+      isLoading: true,
+      favorites: [],
     };
+    this.checkFavorites = this.checkFavorites.bind(this);
+    this.requestFavorites = this.requestFavorites.bind(this);
   }
 
   componentDidMount() {
     this.returnApi();
+    this.requestFavorites();
   }
 
   async returnApi() {
@@ -26,8 +32,25 @@ class Album extends React.Component {
     });
   }
 
+  async requestFavorites() {
+    const favorites = await getFavoriteSongs();
+    this.setState({
+      isLoading: false,
+      favorites,
+    });
+  }
+
+  checkFavorites(trackId) {
+    const { favorites } = this.state;
+    const musicFavorite = favorites.find((music) => music.trackId === trackId);
+    if (musicFavorite) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    const { musics, requestComplete } = this.state;
+    const { musics, requestComplete, isLoading } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -43,9 +66,12 @@ class Album extends React.Component {
               previewUrl={ music.previewUrl }
               trackId={ music.trackId }
               song={ music }
+              checked={ this.checkFavorites(music.trackId) }
+              checkedIfIsFavorite={ this.requestFavorites }
 
             />))
         }
+        { isLoading && <span>Carregando...</span>}
 
       </div>
     );
